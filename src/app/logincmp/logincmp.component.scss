@@ -1,0 +1,30 @@
+mat-sidenav {
+    width: 300px;
+    font-family: 'Edu QLD Beginner', cursive;
+    border: none;
+  }
+
+ .app-title{
+    font-family: 'Edu QLD Beginner', cursive;
+    font-size: larger;
+  }
+ 
+.material-symbols-outlined {
+    font-size: 170px;
+    padding-left: 20%;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 200,
+  'GRAD' 0,
+  'opsz' 30
+}
+
+.googlebtn {
+    font-family: 'Edu QLD Beginner', cursive;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+ 
+.fill-remaining-space{
+  flex: 1 1 auto;
+}

@@ -1,0 +1,55 @@
+<body class="mat-app-background">
+    <!-- Toolbar -->
+    <mat-toolbar color='primary'>
+        <mat-toolbar-row>
+            <span> BlackBox  Application</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="paddtop10">
+        <div class="titletxt">Register for a new BBox account. In case you are looking for your corporate account, please reach out to your admin for same.</div>
+        <div mat-dialog-content class="paddtop10">
+            <form [formGroup]="registerform" class="registerform">
+                <mat-form-field class="full-width">
+                    <input matInput formControlName='clientname' placeholder='Company' required>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName='add1' placeholder='Address1' required>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName='add2' placeholder='Address2'>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName='city' placeholder='City' required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName='state' placeholder='State' required>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName='country' placeholder='Country' required>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName='contactname' placeholder='Contact Name' required>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName='emailid' type="email" placeholder='Email ID' [errorStateMatcher]="matcher" required>
+                    <mat-error *ngIf="registerform?.get('emailid')?.hasError('email') && !registerform?.get('emailid')?.hasError('required')">
+                        Please enter a valid email address</mat-error>
+                    <mat-error *ngIf="registerform?.get('emailid')?.hasError('required')">Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName='phone' minlength="6" placeholder='Phone' required>
+                </mat-form-field>
+
+            </form>
+        </div>
+        <div *ngIf="errormsg" class="invalidmsg">
+            {{errormsgtxt}}
+        </div>
+        <div mat-dialog-actions>
+
+            <button mat-button (click)="saveUserData()" color="primary" cdkFocusInitial [disabled]='!registerform.valid'>Submit</button>
+        </div>
+    </div>
+
+</body>

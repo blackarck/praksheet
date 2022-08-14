@@ -1,0 +1,29 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<body class="mat-app-background">
+
+    <mat-drawer-container>
+     <!-- Toolbar -->
+    <mat-toolbar color='primary'>
+             <span class="app-title">Practice Sheets</span>
+            <span class="fill-remaining-space"></span>
+            <span> <div *ngIf = "bIsUsrLog"><button mat-raised-button color="primary" (click)="googlogin()" class="googlebtn"><span class="material-icons">
+                login
+                </span> login</button></div>
+                <div *ngIf  = "!bIsUsrLog"><button mat-raised-button color="primary" (click)="googlogin()" class="googlebtn"><span class="material-icons">
+                    logout
+                    </span> logout</button></div>
+                </span>
+     </mat-toolbar>
+ 
+
+    <div>
+        <form [formGroup]="loginform">
+            
+        </form>
+    </div>
+
+
+</mat-drawer-container></body>

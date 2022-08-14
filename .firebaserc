@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sugdrop": {
+      "hosting": {
+        "byteboxfront": [
+          "sugdrop"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sugdrop"
+  }
+}
