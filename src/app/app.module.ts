@@ -22,6 +22,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { RegistoptdlgComponent } from './logincmp/registoptdlg/registoptdlg.component';
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { MessageService } from './services/message.service';
+import { QsheetComponent } from './qsheet/qsheet.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MessageService } from './services/message.service';
     RegisterComponent,
     RegpasscmpComponent,
     UserdtlcmpComponent,
-    RegistoptdlgComponent
+    RegistoptdlgComponent,
+    QsheetComponent
   ],
   imports: [
     BrowserModule,

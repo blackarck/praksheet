@@ -28,7 +28,7 @@ export class LogincmpComponent implements OnInit {
   constructor(public a:AuthService,private fb: FormBuilder, private http: HttpClient, private router: Router, public dialog: MatDialog) { 
     this.mainuser=this.a.getLocalStorageUser();
     if(this.mainuser.userid){
-      console.log("Main user is not null "+ this.mainuser.displayname);
+      // console.log("Main user is not null "+ this.mainuser.displayname);
       this.bIsUsrLog=false;
       //
      }else{
@@ -43,9 +43,17 @@ export class LogincmpComponent implements OnInit {
   }
 
   googlogin(){
-    this.a.doGoogleLogin();
+    this.a.doGoogleLogin().then(()=>{
+      this.bIsUsrLog=false;
+    });
   }//end of googlogin
 
+  logout(){
+    this.a.logout();
+     //console.log("logging out user");
+    this.bIsUsrLog=true;
+    this.mainuser=new usercl();
+  }
   register(){
     //show a prompt window for register with email or google
   }

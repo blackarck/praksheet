@@ -1,5 +1,5 @@
 mat-sidenav {
-    width: 300px;
+    width: 200px;
     font-family: 'Edu QLD Beginner', cursive;
     border: none;
   }
@@ -27,4 +27,30 @@ mat-sidenav {
  
 .fill-remaining-space{
   flex: 1 1 auto;
+}
+
+.sidenav-container {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.main-container {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 30px;
+  right: 30px;
+  align-items: center;
+  justify-content: center;
 }
