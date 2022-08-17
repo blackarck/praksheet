@@ -87,7 +87,7 @@ export class AuthService {
           'authorization': usridtoken
         })
       };//end of httpoptions
-      console.log(" calling http option ");
+      //console.log(" calling http option ");
       resolve (this.http.post<any>(posturl,googuser,httpOptions));
     });
   });//end of promise
