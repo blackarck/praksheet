@@ -24,29 +24,33 @@ export class FtchdrpdwnService {
 
   fetchClasses(){
     const posturl = this.APIendpoint+'/api/dropdown/getclass';
-    this.http.get<grades[]>(posturl).subscribe((res)=>{
-    console.log("class out is "+ res[0].classlong);      
-    })
-    }
+ 
+     return this.http.get<grades[]>(posturl) 
+    }//end of fetchclass
 
     fetchSubject(){
       const posturl = this.APIendpoint+'/api/dropdown/getsubject';
+      return this.http.get<subject[]>(posturl);
+      /*
       this.http.get<subject[]>(posturl).subscribe((res)=>{
-      console.log("subjects out is "+ res[0].subject + " ,total-"+res.length);      
-      })
+      //console.log("subjects out is "+ res[0].subject + " ,total-"+res.length);      
+      })*/
       }
 
     fetchLanguage(){
       const posturl = this.APIendpoint+'/api/dropdown/getlang';
-      this.http.get<language[]>(posturl).subscribe((res)=>{
-      console.log("lang out is "+ res[0].language + " ,total-"+res.length);      
-      })
+      return this.http.get<language[]>(posturl);
     }
 
+    fetchReport(formdata:any){
+      const posturl = this.APIendpoint+'/api/practicesheet/getquest';
+      console.log("inside fetch reprot "+JSON.stringify(formdata));
+       return this.http.post<any>(posturl,formdata);
+    }
 }//end of class
 
 export class grades {
-  classid: string ='';
+  classid: number =0
   classshort : string ='';
   classlong: string='';
 }

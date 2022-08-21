@@ -17,6 +17,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
     imports: [
@@ -56,6 +58,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatSlideToggleModule,
         MatSnackBarModule,
         MatExpansionModule,
+        MatChipsModule,
+        MatAutocompleteModule
     ]
 })
 

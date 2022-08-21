@@ -10,27 +10,111 @@
     </mat-expansion-panel-header>
 
     <!--Form for search-->
-    <mat-form-field appearance="fill">
+    <form [formGroup]="editform">
+
+  
+
+      <!--subject start -->
+      <mat-form-field appearance="fill">
       <mat-label>Subject</mat-label>
-      <input matInput>
-    </mat-form-field>
+      <input 
+      class="subject-class"
+      type="text"
+      placeholder="Subject" 
+      aria-label="Type one" 
+      matInput 
+      formControlName="subjectctrl" 
+      [matAutocomplete]="auto">
+      
 
-    <mat-form-field appearance="fill">
-        <mat-label>Marks</mat-label>
-        <input matInput type="number" min="1">
-      </mat-form-field>
+      <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displaySubj">
+          <mat-option *ngFor="let subject of filteredsubjects  | async" [value]="subject">
+              {{subject.subject}}
+          </mat-option>
+      </mat-autocomplete>
+  </mat-form-field>
+<!--subject end -->
 
+ <!--marks start -->
+ <mat-form-field appearance="fill">
+ <mat-label>Marks</mat-label>
+ <input 
+ class="subject-class"
+ type="number"
+ placeholder="Marks" 
+ aria-label="Type one" 
+ matInput 
+ formControlName="marksctrl" 
+ [matAutocomplete]="auto3">
+ 
+
+ <mat-autocomplete #auto3="matAutocomplete"   >
+     <mat-option *ngFor="let mark of markoptions" [value]="mark">
+         {{mark}}
+     </mat-option>
+ </mat-autocomplete>
+</mat-form-field>
+<!--marks end -->
+
+ 
+      <!--class start -->
       <mat-form-field appearance="fill">
         <mat-label>Class</mat-label>
-        <input matInput type="number" min="1">
-      </mat-form-field>
+        <input 
+        class="subject-class"
+        type="text"
+        placeholder="Grade" 
+        aria-label="Type one" 
+        matInput 
+        formControlName="gradectrl" 
+        [matAutocomplete]="auto2">
+        
+  
+        <mat-autocomplete #auto2="matAutocomplete"  [displayWith]="displayGrade" >
+            <mat-option *ngFor="let grade of filteredgrades  | async" [value]="grade">
+                {{grade.classlong}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+  <!--class end -->
 
+      <!--count of questions start-->
+      <mat-form-field appearance="fill">
+        <mat-label>Question Count</mat-label>
+        <input 
+        class="subject-class"
+        type="number"
+        placeholder="Question Count" 
+        aria-label="Question count" 
+        matInput 
+        formControlName="questcountctrl" 
+         >
+    </mat-form-field>
+    <!--count of ques end-->
+      <!--lang start -->
       <mat-form-field appearance="fill">
         <mat-label>Language</mat-label>
-        <input matInput type="number" min="1">
-      </mat-form-field>
+        <input 
+        class="subject-class"
+        type="text"
+        placeholder="Language" 
+        aria-label="Type one" 
+        matInput 
+        formControlName="langctrl" 
+        [matAutocomplete]="auto1"
+        >
+
+        <mat-autocomplete #auto1="matAutocomplete"  [displayWith]="displayLang">
+            <mat-option *ngFor="let language1 of filteredlanguages  | async" [value]="language1">
+                {{language1.language}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+  <!--lang end -->
+
       <!--Button for action-->
     <mat-action-row class="thin_mat_row">
-      <button mat-button>Search</button>
+      <button mat-button (click)="genreport()" >Search</button>
     </mat-action-row>
+  </form>
   </mat-expansion-panel>
