@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuggmaincmpComponent } from './suggmaincmp.component';
+import { AddquestComponent } from './addquest.component';
 
-describe('SuggmaincmpComponent', () => {
-  let component: SuggmaincmpComponent;
-  let fixture: ComponentFixture<SuggmaincmpComponent>;
+describe('AddquestComponent', () => {
+  let component: AddquestComponent;
+  let fixture: ComponentFixture<AddquestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SuggmaincmpComponent ]
+      declarations: [ AddquestComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SuggmaincmpComponent);
+    fixture = TestBed.createComponent(AddquestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

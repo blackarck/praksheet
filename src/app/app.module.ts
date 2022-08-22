@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SuggmaincmpComponent } from './suggmaincmp/suggmaincmp.component';
 import { LogincmpComponent } from './logincmp/logincmp.component';
-import { RegisterComponent } from './register/register.component';
-import { RegpasscmpComponent } from './regpasscmp/regpasscmp.component';
 import { UserdtlcmpComponent } from './userdtlcmp/userdtlcmp.component';
 import { initializeApp,provideFirebaseApp,getApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
@@ -23,17 +20,18 @@ import { RegistoptdlgComponent } from './logincmp/registoptdlg/registoptdlg.comp
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { MessageService } from './services/message.service';
 import { QsheetComponent } from './qsheet/qsheet.component';
+import { MyquestComponent } from './myquest/myquest.component';
+import { AddquestComponent } from './addquest/addquest.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SuggmaincmpComponent,
     LogincmpComponent,
-    RegisterComponent,
-    RegpasscmpComponent,
     UserdtlcmpComponent,
     RegistoptdlgComponent,
-    QsheetComponent
+    QsheetComponent,
+    MyquestComponent,
+    AddquestComponent
   ],
   imports: [
     BrowserModule,

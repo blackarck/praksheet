@@ -6,7 +6,13 @@ import {FormBuilder, FormControl,Validators } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { JsonPipe } from '@angular/common';
- 
+import { MatOption } from '@angular/material/core';
+import { ThisReceiver } from '@angular/compiler';
+import { subject } from '../models/subject';
+import { grades } from '../models/grades';
+import {language} from '../models/language';
+import { questiondata } from '../models/questiondata';
+
 @Component({
   selector: 'app-qsheet',
   templateUrl: './qsheet.component.html',
@@ -29,7 +35,7 @@ export class QsheetComponent implements OnInit {
   removable=true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  markoptions: string[] = ['1', '2', '3','5','10','15','20'];
+  markoptions: string[] = [' ','1', '2', '3','5','10','15','20'];
 
   editform =  this.fb.group({
   subjectctrl: new FormControl({value:'Maths', disabled:false}),
@@ -37,9 +43,21 @@ export class QsheetComponent implements OnInit {
   gradectrl: new FormControl(''),
   langctrl: new FormControl('English'),
   questcountctrl: new FormControl('10'),
-  });
+   });
 
+   gradeval!: grades;
+   subjVal: subject ={subjid: 1, subject: "Maths"};
+   langVal: language = {langid: 1, language: "English"};
  
+   maxmarks:number=0;
+   totalques:number=0;
+   showresult:boolean=false;
+
+   //table vars
+   displayedColumns: string[] = ['questid', 'quest_desc'];
+   questdata !:questiondata;
+   datasource:any;
+   //table vars end
   constructor(private fetchdropdown: FtchdrpdwnService,private fb: FormBuilder, ) {
 
     fetchdropdown.fetchClasses().subscribe((res)=>{
@@ -102,27 +120,56 @@ export class QsheetComponent implements OnInit {
     return this.alllanguages.filter(language => language.language.toLowerCase().includes(value.toString().toLowerCase()));;
   }//end of _filter
 
+  onGradeSelected(option: MatOption){
+    console.log("GradeOpt "+ JSON.stringify(option.value));
+    this.gradeval=option.value;
+  }
+  onSubjSelected(option: MatOption){
+    console.log("GradeOpt "+ JSON.stringify(option.value));
+    this.subjVal=option.value;
+  }
+  onLangSelected(option: MatOption){
+    console.log("GradeOpt "+ JSON.stringify(option.value));
+    this.langVal=option.value;
+  }
+
+  //fetch questions from db
    genreport(){
-    let formObj = this.editform.getRawValue(); 
-      this.fetchdropdown.fetchReport(formObj).subscribe((res)=>{
+    this.totalques=0;
+    this.maxmarks=0;
+    if(this.editform.getRawValue().gradectrl){
+      //do nothing
+    }else{
+      this.gradeval=new grades;
+    }
+    let formtosend = {
+      gradeval: this.gradeval,
+      subjval: this.subjVal,
+      langval: this.langVal,
+      marks: this.editform.getRawValue().marksctrl,
+      questcount: this.editform.getRawValue().questcountctrl,
+    }
+     //let formObj = this.editform.getRawValue(); 
+     console.log("Vals are "+JSON.stringify(formtosend));
+      this.fetchdropdown.fetchReport(formtosend).subscribe((res)=>{
       console.log("output is "+ JSON.stringify(res));
+      this.totalques=res.length;
+      console.log("Total questions are "+this.totalques);
+      for(var k in res){
+         this.maxmarks= this.maxmarks+res[k].marks;
+      }
+      this.questdata=res;
+      this.datasource=this.questdata;
+      this.showresult=true;
+      console.log("Total max marks are "+this.maxmarks);
     })
   }
 }
 
-export class subject {
-  subjid : number=0;
-  subject: string='';
-}
-
-export class grades {
-  classid: number=0;
-  classshort:string='';
-  classlong:string='';
-}
 
 
-export class language {
-  langid : number=0;
-  language: string='';
-}
+
+
+
+
+

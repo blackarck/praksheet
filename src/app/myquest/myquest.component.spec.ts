@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegpasscmpComponent } from './regpasscmp.component';
+import { MyquestComponent } from './myquest.component';
 
-describe('RegpasscmpComponent', () => {
-  let component: RegpasscmpComponent;
-  let fixture: ComponentFixture<RegpasscmpComponent>;
+describe('MyquestComponent', () => {
+  let component: MyquestComponent;
+  let fixture: ComponentFixture<MyquestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegpasscmpComponent ]
+      declarations: [ MyquestComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegpasscmpComponent);
+    fixture = TestBed.createComponent(MyquestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

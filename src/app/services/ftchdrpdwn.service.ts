@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError }  from '../services/http-error-handler.service';
 import { AuthService } from '../auth/auth.service';
+import { subject } from '../models/subject';
+import { grades } from '../models/grades';
+import {language} from '../models/language';
 
 @Injectable({
   providedIn: 'root'
@@ -48,19 +51,3 @@ export class FtchdrpdwnService {
        return this.http.post<any>(posturl,formdata);
     }
 }//end of class
-
-export class grades {
-  classid: number =0
-  classshort : string ='';
-  classlong: string='';
-}
-
-export class subject {
-  subjid : number=0;
-  subject: string='';
-}
-
-export class language {
-  langid : number=0;
-  language: string='';
-}

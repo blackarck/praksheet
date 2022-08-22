@@ -5,3 +5,23 @@
  .subject-class{
    min-width: 200 px;
  }
+
+ .example-spacer {
+  flex: 1 1 auto;
+}
+.questheaderrow{
+  margin-top:20px;
+  padding:none;
+  min-height: 35px;
+  font-size: 12px;
+}
+.questheadermatrow{
+  max-height: 35px;
+}
+.totaltxt{
+  padding-left:10px;
+}
+
+table {
+  width: 100%;
+}

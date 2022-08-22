@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-title>Submit Question</mat-card-title>
+    <mat-card-subtitle>submit a question to add to pool</mat-card-subtitle>
+
+    <mat-card-content>
+        <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Question Description</mat-label>
+            <textarea matInput placeholder="Ex. What is the tens place in ...."></textarea>
+             <mat-hint>Add question description</mat-hint>
+          </mat-form-field>
+
+
+          <!--subject start -->
+      <mat-form-field appearance="fill">
+        <mat-label>Subject</mat-label>
+        <input 
+        class="subject-class"
+        type="text"
+        placeholder="Subject" 
+        aria-label="Type one" 
+        matInput 
+        formControlName="subjectctrl" 
+        [matAutocomplete]="auto">
+        
+  
+        <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displaySubj"  (optionSelected)="onSubjSelected($event.option)" >
+            <mat-option *ngFor="let subject of filteredsubjects  | async" [value]="subject">
+                {{subject.subject}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+  <!--subject end -->
+
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button>Submit</button>
+     </mat-card-actions>
+  </mat-card>
+ 

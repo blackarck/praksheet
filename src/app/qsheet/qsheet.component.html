@@ -27,7 +27,7 @@
       [matAutocomplete]="auto">
       
 
-      <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displaySubj">
+      <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displaySubj"  (optionSelected)="onSubjSelected($event.option)" >
           <mat-option *ngFor="let subject of filteredsubjects  | async" [value]="subject">
               {{subject.subject}}
           </mat-option>
@@ -70,7 +70,7 @@
         [matAutocomplete]="auto2">
         
   
-        <mat-autocomplete #auto2="matAutocomplete"  [displayWith]="displayGrade" >
+        <mat-autocomplete #auto2="matAutocomplete"  [displayWith]="displayGrade"  (optionSelected)="onGradeSelected($event.option)" >
             <mat-option *ngFor="let grade of filteredgrades  | async" [value]="grade">
                 {{grade.classlong}}
             </mat-option>
@@ -104,7 +104,7 @@
         [matAutocomplete]="auto1"
         >
 
-        <mat-autocomplete #auto1="matAutocomplete"  [displayWith]="displayLang">
+        <mat-autocomplete #auto1="matAutocomplete"  [displayWith]="displayLang"  (optionSelected)="onLangSelected($event.option)"  >
             <mat-option *ngFor="let language1 of filteredlanguages  | async" [value]="language1">
                 {{language1.language}}
             </mat-option>
@@ -118,3 +118,35 @@
     </mat-action-row>
   </form>
   </mat-expansion-panel>
+
+  <!--show results here-->
+  <div class="showresult" *ngIf="showresult">
+
+    <div><mat-toolbar class="questheaderrow">
+      <mat-toolbar-row class="questheadermatrow" >
+        <span class="example-spacer"></span>
+        <span>maxmarks  {{maxmarks}}</span><span class="totaltxt">total {{totalques}}</span>
+      </mat-toolbar-row>
+    </mat-toolbar></div>
+
+    <!--table for questions-->
+    <div>
+      <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+
+          <!-- # Column -->
+  <ng-container matColumnDef="questid">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.questid}} </td>
+  </ng-container>
+
+    <!-- question Column -->
+    <ng-container matColumnDef="quest_desc">
+      <th mat-header-cell *matHeaderCellDef> Question </th>
+      <td mat-cell *matCellDef="let element"> {{element.quest_desc}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
