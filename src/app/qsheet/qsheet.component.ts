@@ -150,18 +150,18 @@ export class QsheetComponent implements OnInit {
       questcount: this.editform.getRawValue().questcountctrl,
     }
      //let formObj = this.editform.getRawValue(); 
-     console.log("Vals are "+JSON.stringify(formtosend));
+      //console.log("Vals are "+JSON.stringify(formtosend));
       this.fetchdropdown.fetchReport(formtosend).subscribe((res)=>{
-      console.log("output is "+ JSON.stringify(res));
+      //console.log("output is "+ JSON.stringify(res));
       this.totalques=res.length;
-      console.log("Total questions are "+this.totalques);
+       //console.log("Total questions are "+this.totalques);
       for(var k in res){
          this.maxmarks= this.maxmarks+res[k].marks;
       }
       this.questdata=res;
       this.datasource=this.questdata;
       this.showresult=true;
-      console.log("Total max marks are "+this.maxmarks);
+      // console.log("Total max marks are "+this.maxmarks);
     })
   }
 }

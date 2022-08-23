@@ -47,7 +47,13 @@ export class FtchdrpdwnService {
 
     fetchReport(formdata:any){
       const posturl = this.APIendpoint+'/api/practicesheet/getquest';
-      console.log("inside fetch reprot "+JSON.stringify(formdata));
+       //console.log("inside fetch reprot "+JSON.stringify(formdata));
+       return this.http.post<any>(posturl,formdata);
+    }
+
+    postQstn(formdata:any){
+      const posturl = this.APIendpoint+'/api/practicesheet/postquest';
+       // console.log("inside post qst "+JSON.stringify(formdata));
        return this.http.post<any>(posturl,formdata);
     }
 }//end of class

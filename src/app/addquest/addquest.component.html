@@ -3,9 +3,11 @@
     <mat-card-subtitle>submit a question to add to pool</mat-card-subtitle>
 
     <mat-card-content>
+    <form [formGroup]="editform">
+
         <mat-form-field appearance="fill" class="example-full-width">
             <mat-label>Question Description</mat-label>
-            <textarea matInput placeholder="Ex. What is the tens place in ...."></textarea>
+            <textarea matInput placeholder="Ex. What is the tens place in ...."  formControlName="questtxtctrl"></textarea>
              <mat-hint>Add question description</mat-hint>
           </mat-form-field>
 
@@ -18,8 +20,9 @@
         type="text"
         placeholder="Subject" 
         aria-label="Type one" 
+        id="subjectctrl"
+         formControlName="subjectctrl" 
         matInput 
-        formControlName="subjectctrl" 
         [matAutocomplete]="auto">
         
   
@@ -28,14 +31,99 @@
                 {{subject.subject}}
             </mat-option>
         </mat-autocomplete>
+       
     </mat-form-field>
   <!--subject end -->
 
+  <!--marks start -->
+ <mat-form-field appearance="fill">
+    <mat-label>Marks</mat-label>
+    <input 
+    class="subject-class"
+    type="number"
+    placeholder="Marks" 
+    aria-label="Type one" 
+    matInput 
+    formControlName="marksctrl" 
+    [matAutocomplete]="auto3">
+    
+   
+    <mat-autocomplete #auto3="matAutocomplete"   >
+        <mat-option *ngFor="let mark of markoptions" [value]="mark">
+            {{mark}}
+        </mat-option>
+    </mat-autocomplete>
+   </mat-form-field>
+   <!--marks end -->
+
+    <!--class start -->
+    <mat-form-field appearance="fill">
+        <mat-label>Class</mat-label>
+        <input 
+        class="subject-class"
+        type="text"
+        placeholder="Grade" 
+        aria-label="Type one" 
+        matInput 
+        formControlName="gradectrl" 
+        [matAutocomplete]="auto2">
+        
+  
+        <mat-autocomplete #auto2="matAutocomplete"  [displayWith]="displayGrade"  (optionSelected)="onGradeSelected($event.option)" >
+            <mat-option *ngFor="let grade of filteredgrades  | async" [value]="grade">
+                {{grade.classlong}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+  <!--class end -->
+   <!--time of questions start-->
+   <mat-form-field appearance="fill">
+    <mat-label>Question time</mat-label>
+    <input 
+    class="subject-class"
+    type="number"
+    placeholder="Question time min" 
+    aria-label="Question time min" 
+    matInput 
+    formControlName="questtmctrl" 
+     >
+</mat-form-field>
+<!--time of ques end-->
+    <!--lang start -->
+    <mat-form-field appearance="fill">
+        <mat-label>Language</mat-label>
+        <input 
+        class="subject-class"
+        type="text"
+        placeholder="Language" 
+        aria-label="Type one" 
+        matInput 
+        formControlName="langctrl" 
+        [matAutocomplete]="auto1"
+        >
+
+        <mat-autocomplete #auto1="matAutocomplete"  [displayWith]="displayLang"  (optionSelected)="onLangSelected($event.option)"  >
+            <mat-option *ngFor="let language1 of filteredlanguages  | async" [value]="language1">
+                {{language1.language}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+  <!--lang end -->
+    </form>
+
+    <div *ngIf="editform?.get('subjectctrl')!.invalid && (editform?.get('subjectctrl')!.dirty || editform?.get('subjectctrl')!.touched)" class="warningsign">
+     
+    <div *ngIf="editform?.get('subjectctrl')?.errors?.['loverror']">
+        Please pick subject from drop down list
+      </div>
+      </div>
 
     </mat-card-content>
 
+   
     <mat-card-actions>
-      <button mat-button>Submit</button>
+      <button mat-button (click)="addQstn()" [disabled]="!editform.valid || ifUserLogin">Submit</button>
+      <div class="warningsign" *ngIf="ifUserLogin">You must be logged in to submit</div>
      </mat-card-actions>
   </mat-card>
  
