@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParamsOptions } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { map} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError }  from '../services/http-error-handler.service';
 import { AuthService } from '../auth/auth.service';
 import { subject } from '../models/subject';
 import { grades } from '../models/grades';
 import {language} from '../models/language';
+import { Observer } from 'firebase/messaging';
 
 @Injectable({
   providedIn: 'root'
@@ -51,9 +52,41 @@ export class FtchdrpdwnService {
        return this.http.post<any>(posturl,formdata);
     }
 
-    postQstn(formdata:any){
+     postQstn(formdata:any) {
       const posturl = this.APIendpoint+'/api/practicesheet/postquest';
-       // console.log("inside post qst "+JSON.stringify(formdata));
-       return this.http.post<any>(posturl,formdata);
-    }
+      return this.auths.getuserIDTokenOB().pipe(map((res)=>{
+        //console.log("res is "+res);
+        let httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT',
+            'authorization': res
+          })
+        };//end of httpoptions
+          return this.http.post<any>(posturl,formdata,httpOptions);
+      }))
+
+      /*
+     
+      let httpOptions;
+       this.auths.getUserIDToken()?.then((res:any)=>{
+        usridtoken=res;
+         //console.log("Id token recieved " + usridtoken);
+         let httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT',
+            'authorization': usridtoken
+          })
+        };//end of httpoptions
+        return  this.http.post<any>(posturl,formdata,httpOptions);
+        //console.log(" calling http option ");
+      }) ;
+      */
+     
+    }//end of post question
+
+ 
 }//end of class

@@ -12,6 +12,7 @@ import {map, startWith} from 'rxjs/operators';
 import {MatSnackBar ,  MatSnackBarHorizontalPosition,  MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import {usercl} from '../models/userclass';
 import {AuthService} from '../auth/auth.service';
+ 
 
 @Component({
   selector: 'app-addquest',
@@ -49,6 +50,7 @@ export class AddquestComponent implements OnInit {
     langctrl: new FormControl('English'),
     questtxtctrl: new FormControl('',[Validators.required]),
     questtmctrl: new FormControl(''),
+    questtagctrl:new FormControl(''),
      });
 
      messagetxt="";
@@ -164,11 +166,22 @@ export class AddquestComponent implements OnInit {
       langval: this.langVal,
       marks: this.editform.getRawValue().marksctrl,
       qtime : this.editform.getRawValue().questtmctrl,
-      qtext: this.editform.getRawValue().questtxtctrl
+      qtext: this.editform.getRawValue().questtxtctrl,
+      qtags: this.editform.getRawValue().questtagctrl,
      }
      this.fetchdropdown.postQstn(formtosend).subscribe((res)=>{
-      //show a message that it was posted successfully
-      console.log("Res for post qstn "+ JSON.stringify(res));
+      //console.log("res is "+JSON.stringify(res));
+      res.subscribe((dataa)=>{
+        console.log("Data is "+JSON.stringify(dataa));
+        if(dataa.success){
+          this.openSnackBar("Question saved successfully");
+        }else{
+          if(dataa.profane){
+            this.openSnackBar("Can't save contains profanity/bad words");
+          }
+        }
+         this.editform.controls.questtxtctrl.setValue(null);
+      })
      });
   }//end of addqstn
 

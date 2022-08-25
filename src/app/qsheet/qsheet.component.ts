@@ -43,6 +43,7 @@ export class QsheetComponent implements OnInit {
   gradectrl: new FormControl(''),
   langctrl: new FormControl('English'),
   questcountctrl: new FormControl('10'),
+  qtagctrl: new FormControl(''),
    });
 
    gradeval!: grades;
@@ -148,6 +149,7 @@ export class QsheetComponent implements OnInit {
       langval: this.langVal,
       marks: this.editform.getRawValue().marksctrl,
       questcount: this.editform.getRawValue().questcountctrl,
+      qtags: this.editform.getRawValue().qtagctrl,
     }
      //let formObj = this.editform.getRawValue(); 
       //console.log("Vals are "+JSON.stringify(formtosend));

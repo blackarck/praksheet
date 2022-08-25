@@ -6,7 +6,7 @@ import firebase from 'firebase/compat/app';
 import {Users} from '../models/users';
 import { HttpClient, HttpHeaders, HttpParamsOptions } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable,from } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError }  from '../services/http-error-handler.service';
 import {MatSnackBar ,  MatSnackBarHorizontalPosition,  MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
@@ -37,6 +37,14 @@ export class AuthService {
     this.handleError = httpErrorHandler.createHandleError('AuthService');
    
    }
+
+   getUserIDToken(){
+    return  firebase.auth().currentUser?.getIdToken(true);
+    }
+   
+    getuserIDTokenOB(): Observable<any>{
+      return  from(firebase.auth().currentUser?.getIdToken(true)!);
+    }
 
    doGoogleLogin(){
   
@@ -93,11 +101,6 @@ export class AuthService {
   });//end of promise
  }//end of start login
 
- 
-
-   getUserIDToken(): any{
-  return  firebase.auth().currentUser?.getIdToken(true);
-  }
 
   logout() {
    this.afAuth.signOut();
@@ -123,7 +126,7 @@ export class AuthService {
   }
 
   setuser(takeuser:any ){
-    this.getUserIDToken().then((res:any)=>{
+    this.getUserIDToken()?.then((res:any)=>{
       localStorage.setItem('userid', takeuser.email);
       localStorage.setItem('token', res);
       localStorage.setItem('photourl',takeuser.photoURL);
