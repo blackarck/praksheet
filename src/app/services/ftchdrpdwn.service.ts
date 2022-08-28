@@ -102,5 +102,26 @@ export class FtchdrpdwnService {
         }
           return this.http.post<any>(posturl,bodydt,httpOptions);
       }))     
-    }
+    }//end of fetch my questions
+
+    /****Delete a user questions ********/
+    delMyQstn(questid:string){
+      const posturl = this.APIendpoint+'/api/practicesheet/delmyqstn';
+      return this.auths.getuserIDTokenOB().pipe(map((res)=>{
+        //console.log("res is "+res);
+        let httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT',
+            'authorization': res
+          })
+        };//end of httpoptions
+        let bodydt = {
+          qstid: questid
+        }
+          return this.http.post<any>(posturl,bodydt,httpOptions);
+      }))     
+    }//end of fetch my questions
+
 }//end of class
