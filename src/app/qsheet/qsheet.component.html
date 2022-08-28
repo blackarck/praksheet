@@ -1,4 +1,4 @@
- <mat-expansion-panel  hideToggle>
+ <mat-expansion-panel [expanded]="openPanel" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
          Practice Sheet    
@@ -149,9 +149,15 @@
       <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
 
           <!-- # Column -->
+          <!--
   <ng-container matColumnDef="questid">
     <th mat-header-cell *matHeaderCellDef> No. </th>
     <td mat-cell *matCellDef="let element"> {{element.questid}} </td>
+  </ng-container>-->
+
+  <ng-container matColumnDef="sno">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.sno}} </td>
   </ng-container>
 
     <!-- question Column -->

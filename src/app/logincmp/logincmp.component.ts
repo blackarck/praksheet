@@ -37,6 +37,16 @@ export class LogincmpComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.a.afAuth.onAuthStateChanged((user)=>{
+      //console.log("Current user is "+JSON.stringify(user));
+      if(user){
+        //user is there enable the button
+        this.bIsUsrLog=false;
+      }else{
+        this.bIsUsrLog=true;
+        this.mainuser=new usercl();
+      }
+    });
   }
 
   onSubmit(googForm:any){
@@ -47,6 +57,8 @@ export class LogincmpComponent implements OnInit {
       this.bIsUsrLog=false;
     });
   }//end of googlogin
+
+ 
 
   logout(){
     this.a.logout();

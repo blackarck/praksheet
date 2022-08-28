@@ -62,9 +62,13 @@ export class AuthService {
       this.startLogin(googuser).then((result)=>{
         result.subscribe((data:any)=>{
           console.log("Data return is "+ JSON.stringify(data));
-          if(data.usrexist|| data.usrcreated){
+          if(data.usrexist || data.usrcreated){
             //show the correct username in place of login
-
+            if(data.active){
+              //do nothing
+            }else{
+              this.logout();
+            }
           }//end of if userexists
         });
       })

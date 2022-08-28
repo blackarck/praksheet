@@ -113,7 +113,8 @@ export class AddquestComponent implements OnInit {
       }else{
         this.ifUserLogin=true;
       }
-    })
+    });
+    
   }
 
   

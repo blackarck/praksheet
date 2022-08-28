@@ -55,10 +55,14 @@ export class QsheetComponent implements OnInit {
    showresult:boolean=false;
 
    //table vars
-   displayedColumns: string[] = ['questid', 'quest_desc'];
+   displayedColumns: string[] = [ 'sno', 'quest_desc'];
    questdata !:questiondata;
    datasource:any;
    //table vars end
+
+   openPanel:boolean=true;
+
+
   constructor(private fetchdropdown: FtchdrpdwnService,private fb: FormBuilder, ) {
 
     fetchdropdown.fetchClasses().subscribe((res)=>{
@@ -138,6 +142,8 @@ export class QsheetComponent implements OnInit {
    genreport(){
     this.totalques=0;
     this.maxmarks=0;
+    this.openPanel=false;
+    
     if(this.editform.getRawValue().gradectrl){
       //do nothing
     }else{
