@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LogincmpComponent } from './logincmp/logincmp.component';
-import { UserdtlcmpComponent } from './userdtlcmp/userdtlcmp.component';
 import { initializeApp,provideFirebaseApp,getApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { initializeAuth,provideAuth,getAuth , browserPopupRedirectResolver,
@@ -27,7 +26,6 @@ import { AddquestComponent } from './addquest/addquest.component';
   declarations: [
     AppComponent,
     LogincmpComponent,
-    UserdtlcmpComponent,
     RegistoptdlgComponent,
     QsheetComponent,
     MyquestComponent,

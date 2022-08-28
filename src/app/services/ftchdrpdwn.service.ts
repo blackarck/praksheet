@@ -65,28 +65,42 @@ export class FtchdrpdwnService {
           })
         };//end of httpoptions
           return this.http.post<any>(posturl,formdata,httpOptions);
-      }))
+      }))     
+    }//end of post question
 
-      /*
-     
-      let httpOptions;
-       this.auths.getUserIDToken()?.then((res:any)=>{
-        usridtoken=res;
-         //console.log("Id token recieved " + usridtoken);
-         let httpOptions = {
+    
+    ftchKarma(){
+      const posturl = this.APIendpoint+'/api/practicesheet/usrkarma';
+      return this.auths.getuserIDTokenOB().pipe(map((res)=>{
+        //console.log("res is "+res);
+        let httpOptions = {
           headers: new HttpHeaders({
             'Content-Type':  'application/json',
             'Access-Control-Allow-Origin':'*',
             'Access-Control-Allow-Methods': 'GET, POST, PUT',
-            'authorization': usridtoken
+            'authorization': res
           })
         };//end of httpoptions
-        return  this.http.post<any>(posturl,formdata,httpOptions);
-        //console.log(" calling http option ");
-      }) ;
-      */
-     
-    }//end of post question
-
+          return this.http.get<any>(posturl,httpOptions);
+      }))     
+    }// end of fetch karma
  
+    ftchMyQstn(pgcount:number){
+      const posturl = this.APIendpoint+'/api/practicesheet/myqstn';
+      return this.auths.getuserIDTokenOB().pipe(map((res)=>{
+        //console.log("res is "+res);
+        let httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT',
+            'authorization': res
+          })
+        };//end of httpoptions
+        let bodydt = {
+          pgcnt: pgcount
+        }
+          return this.http.post<any>(posturl,bodydt,httpOptions);
+      }))     
+    }
 }//end of class

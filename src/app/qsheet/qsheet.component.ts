@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FtchdrpdwnService } from '../services/ftchdrpdwn.service';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormBuilder, FormControl,Validators } from '@angular/forms';
+import {FormBuilder, FormControl } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { JsonPipe } from '@angular/common';
 import { MatOption } from '@angular/material/core';
-import { ThisReceiver } from '@angular/compiler';
 import { subject } from '../models/subject';
 import { grades } from '../models/grades';
 import {language} from '../models/language';

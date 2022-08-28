@@ -7,7 +7,6 @@ import {Users} from '../models/users';
 import { HttpClient, HttpHeaders, HttpParamsOptions } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable,from } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError }  from '../services/http-error-handler.service';
 import {MatSnackBar ,  MatSnackBarHorizontalPosition,  MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 import {usercl} from '../models/userclass';
@@ -43,8 +42,8 @@ export class AuthService {
     }
    
     getuserIDTokenOB(): Observable<any>{
-      return  from(firebase.auth().currentUser?.getIdToken(true)!);
-    }
+       return this.afAuth.idToken ;
+      }
 
    doGoogleLogin(){
   
@@ -61,7 +60,7 @@ export class AuthService {
       var googuser:Users=res.user as Users;
       this.startLogin(googuser).then((result)=>{
         result.subscribe((data:any)=>{
-          console.log("Data return is "+ JSON.stringify(data));
+          //console.log("Data return is "+ JSON.stringify(data));
           if(data.usrexist || data.usrcreated){
             //show the correct username in place of login
             if(data.active){
@@ -109,6 +108,7 @@ export class AuthService {
   logout() {
    this.afAuth.signOut();
    localStorage.clear();
+   this.mainuser=new usercl();
   }
   
 
@@ -123,6 +123,7 @@ export class AuthService {
   getLocalStorageUser():usercl{
     let retuser:usercl=new usercl();
     retuser.userid = <string>localStorage.getItem('userid');
+    retuser.emailid=<string>localStorage.getItem('email');
     retuser.displayname = <string>localStorage.getItem('displayname');
     retuser.photourl = <string>localStorage.getItem('photourl');
     
@@ -131,7 +132,8 @@ export class AuthService {
 
   setuser(takeuser:any ){
     this.getUserIDToken()?.then((res:any)=>{
-      localStorage.setItem('userid', takeuser.email);
+      localStorage.setItem('email', takeuser.email);
+      localStorage.setItem('userid', takeuser.uid);
       localStorage.setItem('token', res);
       localStorage.setItem('photourl',takeuser.photoURL);
       localStorage.setItem('displayname',takeuser.displayName);

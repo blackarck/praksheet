@@ -1,1 +1,19 @@
-<p>myquest works!</p>
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="avatar-header-image"><img mat-card-avatar  src={{userhere.photourl}}></div>
+      <mat-card-title>{{userhere.displayname}}</mat-card-title>
+      <mat-card-subtitle>{{userhere.emailid}}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <p>Karma  {{karmapts}}</p>
+    <p class="infotxt">You earn karma poins by making contributions towards questions</p>
+    <mat-card-content>
+      <p>
+        See the questions submitted by you. You can modify or delete a previous submitted question as well.
+      </p>
+      <p class="infotxt">Only admin sees your email and other personal information</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="fetchMyQstn()">Submissions</button>
+     </mat-card-actions>
+  </mat-card>

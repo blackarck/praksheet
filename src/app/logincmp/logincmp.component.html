@@ -32,7 +32,7 @@
                         <mat-icon class="dash-icon" >note_add</mat-icon>Add Q
                     </button>
                 </div>  
-                <div class='sidenav-content'>
+                <div class='sidenav-content' *ngIf="!bIsUsrLog">
                     <button mat-button color="accent" [routerLink]="['./myquest']">
                         <mat-icon class="dash-icon" >psychology_alt</mat-icon>My Q
                     </button>
