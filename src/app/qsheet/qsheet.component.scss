@@ -25,3 +25,54 @@
 table {
   width: 100%;
 }
+
+
+.mat-cell{
+  font-size: 13px;
+}
+
+
+.showresult{
+  padding-top:10px;
+  padding-bottom: 20px;
+  font-size: smaller;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.dash-icon{
+  font-size: smaller;
+}
+
+.mat-column-sno{
+  flex: 0 0 8%;
+}
+.mat-column-del{
+  flex: none;
+  width: 3%;
+  color: grey;
+}
+.delbtnright{
+  padding-right: 2px;
+}
+
+.belowqstn{
+  color: rgb(139, 139, 139);
+  padding-left:50px;
+  padding-bottom: 5px;;
+}
+
+.arrbtn{
+  min-width: 14px;
+  padding: 0 6px;
+  line-height: 26px;
+}

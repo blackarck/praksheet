@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/byteboxfront",
+            "outputPath": "public",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -109,9 +109,9 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "byteboxfront:build:production",
-            "firebaseProject": "sugdrop",
-            "firebaseHostingSite": "sugdrop"
+            "browserTarget": "praksheet:build:production",
+            "firebaseProject": "praksheet",
+            "firebaseHostingSite": "praksheet"
           }
         }
       }

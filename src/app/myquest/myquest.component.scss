@@ -10,3 +10,34 @@
 .allpgfont{
     font-family: 'Edu QLD Beginner', cursive;
 }
+
+
+table {
+  width: 100%;
+}
+
+
+.mat-cell{
+    font-size: 12px;
+ }
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .questheaderrow{
+    margin-top:20px;
+    padding:none;
+    min-height: 35px;
+    font-size: 11px;
+  }
+  .questheadermatrow{
+    max-height: 35px;
+  }
+  .totaltxt{
+    padding-left:10px;
+  }
+  .showresult{
+    padding-top:10px;
+    padding-bottom: 20px;
+    font-size: smaller;
+  }

@@ -126,6 +126,7 @@ export class AuthService {
     retuser.emailid=<string>localStorage.getItem('email');
     retuser.displayname = <string>localStorage.getItem('displayname');
     retuser.photourl = <string>localStorage.getItem('photourl');
+    //console.log("Photo url is "+retuser.photourl);
     
     return retuser;
   }

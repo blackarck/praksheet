@@ -21,6 +21,7 @@ import { MessageService } from './services/message.service';
 import { QsheetComponent } from './qsheet/qsheet.component';
 import { MyquestComponent } from './myquest/myquest.component';
 import { AddquestComponent } from './addquest/addquest.component';
+import { PromptdialogComponent } from './services/promptdialog/promptdialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AddquestComponent } from './addquest/addquest.component';
     RegistoptdlgComponent,
     QsheetComponent,
     MyquestComponent,
-    AddquestComponent
+    AddquestComponent,
+    PromptdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ import { AddquestComponent } from './addquest/addquest.component';
   ],
   providers: [
     HttpErrorHandler,
+    PromptdialogComponent,
     MessageService,
     { provide: AUTH_SETTINGS, useValue: {appVerificationDisabledForTesting: true} },
   ],

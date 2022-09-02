@@ -121,7 +121,26 @@ export class FtchdrpdwnService {
           qstid: questid
         }
           return this.http.post<any>(posturl,bodydt,httpOptions);
-      }))     
+      }));
     }//end of fetch my questions
+
+    doQstnlike(questid:string){
+      const posturl = this.APIendpoint+'/api/practicesheet/likeqstn';
+      return this.auths.getuserIDTokenOB().pipe(map((res)=>{
+        //console.log("res is "+res);
+        let httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type':  'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT',
+            'authorization': res
+          })
+        };//end of httpoptions
+        let bodydt = {
+          qstid: questid
+        }
+          return this.http.post<any>(posturl,bodydt,httpOptions);
+      })); 
+    }//end of doqstnlike
 
 }//end of class

@@ -1,5 +1,6 @@
 export class questiondata {
-    questid: number=0;
+    sno : number=0;
+    questid: string="";
     quest_desc:string="";
     subjid: number=0;
     qtype: number=0;
