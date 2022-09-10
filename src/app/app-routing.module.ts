@@ -4,6 +4,7 @@ import { LogincmpComponent } from './logincmp/logincmp.component';
  import { QsheetComponent } from './qsheet/qsheet.component';
 import { MyquestComponent } from './myquest/myquest.component';
 import { AddquestComponent } from './addquest/addquest.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   { path: 'loginscr', component: LogincmpComponent ,
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'qsheet', component: QsheetComponent },
     {path: 'addquest',component:AddquestComponent},
     {path: 'myquest', component:MyquestComponent},
+    {path: 'about', component: AboutComponent},
    ]},
    { path: '', redirectTo: '/loginscr', pathMatch: 'full'  }
 ];

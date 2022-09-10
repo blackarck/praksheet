@@ -22,6 +22,7 @@ import { QsheetComponent } from './qsheet/qsheet.component';
 import { MyquestComponent } from './myquest/myquest.component';
 import { AddquestComponent } from './addquest/addquest.component';
 import { PromptdialogComponent } from './services/promptdialog/promptdialog.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PromptdialogComponent } from './services/promptdialog/promptdialog.comp
     QsheetComponent,
     MyquestComponent,
     AddquestComponent,
-    PromptdialogComponent
+    PromptdialogComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
