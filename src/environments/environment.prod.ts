@@ -9,5 +9,5 @@ export const environment = {
     measurementId: "G-T759FY4RYP"
   },
   production: true,
-  APIEndpoint:"https://praksheetapi.ioblitz.com:3300",
+  APIEndpoint:"https://praksheetapi.ioblitz.com",
 };

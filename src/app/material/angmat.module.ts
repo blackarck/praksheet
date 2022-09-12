@@ -19,6 +19,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { MatAutocompleteModule} from '@angular/material/autocomplete';
         MatSidenavModule,
         MatSliderModule,
         MatSlideToggleModule,
+        MatListModule,
     ],
     exports:[
         FormsModule,
@@ -59,7 +61,8 @@ import { MatAutocompleteModule} from '@angular/material/autocomplete';
         MatSnackBarModule,
         MatExpansionModule,
         MatChipsModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatListModule,
     ]
 })
 
